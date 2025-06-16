@@ -1,0 +1,109 @@
+.home {
+  display: flex;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+.sidebar {
+  width: 240px;
+  background-color: rgb(123, 168, 253);
+  color: white;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(255, 255, 255, 0.1);
+}
+
+.sidebarTitle {
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+
+.sidebarMenu {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebarItem {
+  padding: 12px 15px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.sidebarItem:hover {
+  background-color: rgb(21, 41, 80);
+}
+
+.active {
+  background-color: rgb(45, 84, 156);
+  font-weight: bold;
+}
+
+.mainContent {
+  flex: 1;
+  padding: 40px;
+  background-color: #292929;
+  overflow-y: scroll;
+}
+
+.cardsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 30px;
+  justify-content: center;
+}
+
+.card {
+  background-color: white;
+  border-radius: 12px;
+  width: 280px;
+  overflow: hidden;
+  transition: transform 0.2s ease-in-out;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: scale(1.02);
+   box-shadow: 2px 2px 6px rgba(255, 255, 255, 0.5);
+}
+
+.cardImage {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.cardContent {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.cardTitle {
+  font-size: 20px;
+  margin: 0 0 10px;
+}
+
+.cardDescription {
+  font-size: 14px;
+  color: #555;
+  flex: 1;
+}
+
+.cardButton {
+  background-color: #4f46e5;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: background 0.3s;
+}
+
+.cardButton:hover {
+  background-color: #3730a3;
+}
