@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import styles from './styles.module.css'
-import testImage from '../../assets/images/woman_speaker.png'
 import Events from '../../components/Events/Events'
 import CreateEvent from '../../components/CriarEvento/CriarEvento'
 
@@ -19,10 +18,10 @@ function Home() {
             Eventos
           </li>
           <li
-            className={`${styles.sidebarItem} ${selectedOption === 'EventsDetail' ? styles.active : ''}`}
-            onClick={() => setSelectedOption('EventsDetail')}
+            className={`${styles.sidebarItem} ${selectedOption === 'MyEvents' ? styles.active : ''}`}
+            onClick={() => setSelectedOption('MyEvents')}
           >
-            Detalhe Eventos
+            Meus Eventos
           </li>
           <li
             className={`${styles.sidebarItem} ${selectedOption === 'EventsCreate' ? styles.active : ''}`}
@@ -30,14 +29,26 @@ function Home() {
           >
             Criar Evento (admin)
           </li>
+          <li
+            className={`${styles.sidebarItem} ${selectedOption === 'EventsAdmin' ? styles.active : ''}`}
+            onClick={() => setSelectedOption('EventsAdmin')}
+          >
+            Eventos (admin)
+          </li>
+          <li
+            className={`${styles.sidebarItem} ${styles.logoutItem}`}
+            onClick={() => setSelectedOption('EventsAdmin')}
+          >
+            Sair
+          </li>
         </ul>
       </div>
       <div className={styles.mainContent}>
         {selectedOption === 'Events' && <Events />}
-        {/* {selectedOption === 'EventsDetail' && <EventsDetail />} */}
+        {/* {selectedOption === 'MyEvents' && <MyEvents />} */}
         {selectedOption === 'EventsCreate' && <CreateEvent />}
+        {selectedOption === 'EventsAdmin' && <Events />}
       </div>
-
     </div>
   )
 }

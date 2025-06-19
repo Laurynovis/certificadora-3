@@ -22,6 +22,10 @@
   padding: 0;
 }
 
+.logoutItem {
+  margin-top: 50px;
+}
+
 .sidebarItem {
   padding: 12px 15px;
   margin-bottom: 10px;
