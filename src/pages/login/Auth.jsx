@@ -1,17 +1,20 @@
 import Speaker from '../../assets/images/woman_speaker.png'
 import styles from "./styles.module.css"
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 function Auth() {
   const [isLogin, setIsLogin] = useState(true)
-
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [name, setName] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
+  const navigate = useNavigate();
 
   const handleLogin = async (email, password) => {
     alert(`Loguei com email: ${email}`)
+    navigate('/home');
+
   }
 
   const handleRegister = async (name, email, password, confirmPassword) => {

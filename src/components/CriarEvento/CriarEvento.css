@@ -1,0 +1,98 @@
+
+.container-criar-evento {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.card-criar-evento {
+  background-color: white;
+  border-radius: 15px;
+  padding: 30px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card-criar-evento h2 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 25px;
+  font-size: 1.8rem;
+}
+
+.card-criar-evento label {
+  display: block;
+  margin: 15px 0 8px;
+  font-weight: 600;
+  color: #2c3e50;
+  font-size: 0.95rem;
+}
+
+.card-criar-evento input,
+.card-criar-evento textarea {
+  width: 100%;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  background-color: #fff;
+  color: #333; 
+  transition: border 0.3s ease;
+}
+
+.card-criar-evento input:focus,
+.card-criar-evento textarea:focus {
+  outline: none;
+  border-color: #2575fc;
+  box-shadow: 0 0 0 2px rgba(37, 117, 252, 0.2);
+}
+
+.card-criar-evento textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.card-criar-evento input::placeholder,
+.card-criar-evento textarea::placeholder {
+  color: #95a5a6;
+  opacity: 1;
+}
+
+.data-hora-box {
+  border-radius: 10px;
+  width: 100%;
+}
+
+.data-hora-flex {
+  display: flex;
+  gap: 10px;
+}
+
+.data-hora-flex input {
+  flex: 1;
+}
+
+.botao-criar {
+  margin-top: 25px;
+  width: 100%;
+  background-color: #2575fc;
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.botao-criar:hover {
+  background-color: #1a68e0;
+  transform: translateY(-2px);
+}
+
+.botao-criar:active {
+  transform: translateY(0);
+}
