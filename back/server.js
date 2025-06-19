@@ -9,7 +9,6 @@ dotenv.config();
 
 const app = express();
 
-// Permitir requisições do frontend (exemplo para http://localhost:5173)
 app.use(cors());
 
 app.use(express.json());
