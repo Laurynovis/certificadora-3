@@ -32,7 +32,7 @@ CREATE TABLE inscricoes (
     UNIQUE(usuario_id, evento_id)
 );
 
-popular 
+-- Popular --
 
 -- Inserindo um admin
 INSERT INTO usuarios (nome, email, senha, tipo_usuario)
