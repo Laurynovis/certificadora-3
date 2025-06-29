@@ -20,22 +20,22 @@ function Home() {
   }, []);
 
   const fetchInscritos = async (eventoId) => {
-  if (selectedEventId === eventoId) {
-    setSelectedEventId(null);
-    setInscritos([]);
-    return;
-  }
-
-  try {
-    const res = await fetch(`http://localhost:3000/api/inscricoes/evento/${eventoId}`);
-    const data = await res.json();
-    setInscritos(data);
-    setSelectedEventId(eventoId);
-  } catch (error) {
-    console.error('Erro ao carregar inscritos:', error);
-    alert('Erro ao carregar inscritos');
-  }
-};
+    if (selectedEventId === eventoId) {
+      setSelectedEventId(null);
+      setInscritos([]);
+      return;
+    }
+  
+    try {
+      const res = await fetch(`http://localhost:3000/api/inscricoes/evento/${eventoId}`);
+      const data = await res.json();
+      setInscritos(data);
+      setSelectedEventId(eventoId);
+    } catch (error) {
+      console.error('Erro ao carregar inscritos:', error);
+      alert('Erro ao carregar inscritos');
+    }
+  };
 
 
   return (

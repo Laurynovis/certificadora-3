@@ -9,7 +9,6 @@ import { useNavigate } from 'react-router-dom';
 function Home() {
   const [selectedOption, setSelectedOption] = useState('Events')
   const navigate = useNavigate();
-  const userID = localStorage.getItem('userId');
   const userType = localStorage.getItem('userType');
 
   return (

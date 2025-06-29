@@ -35,5 +35,47 @@ CREATE TABLE inscricoes (
 -- Popular --
 
 -- Inserindo um admin
-INSERT INTO usuarios (nome, email, senha, tipo_usuario)
-VALUES ('Admin 1', 'admin@email.com', '123', 'admin');
+INSERT INTO usuarios (email, nome, senha, tipo_usuario)
+VALUES
+  ('admin1@example.com', 'Pedro Rocha', '123', 'admin'),
+  ('admin2@example.com', 'Lucas Zuque', '123', 'admin'),
+  ('admin3@example.com', 'Pedro Enzo', '123', 'admin'),
+  ('admin4@example.com', 'Victor Calado', '123', 'admin');
+
+
+-- Eventos --
+
+INSERT INTO eventos (apresentador, descricao, data_evento, hora_evento, local, criado_por)
+VALUES
+  (
+    'João Silva',
+    'Palestra sobre inovação tecnológica e tendências para 2025.',
+    '2025-07-15',
+    '19:00',
+    'Auditório Principal',
+    1
+  ),
+  (
+    'Maria Oliveira',
+    'Workshop prático sobre estratégias eficazes de marketing digital.',
+    '2025-08-01',
+    '14:30',
+    'Sala 204',
+    2
+  ),
+  (
+    'Carlos Pereira',
+    'Seminário para discutir práticas sustentáveis nas empresas.',
+    '2025-09-10',
+    '09:00',
+    'Sala de Conferências B',
+    1
+  ),
+  (
+    'Ana Costa',
+    'Painel de discussão com empreendedores locais sobre inovação e startups.',
+    '2025-10-05',
+    '18:30',
+    'Auditório Secundário',
+    3
+  );
