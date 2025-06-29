@@ -31,9 +31,6 @@ function MeusEventos() {
                 {new Date(event.data_evento).toLocaleDateString('pt-BR')} às {event.hora_evento.slice(0, 5)}
               </p>
               <p className={styles.cardLocation}>{event.local}</p>
-              <button className={styles.cardButton} onClick={() => handleInscrever(event.id)}>
-                Inscrever-se
-              </button>
             </div>
           </div>
         ))}

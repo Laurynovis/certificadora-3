@@ -9,6 +9,8 @@ import { useNavigate } from 'react-router-dom';
 function Home() {
   const [selectedOption, setSelectedOption] = useState('Events')
   const navigate = useNavigate();
+  const userID = localStorage.getItem('userId');
+  const userType = localStorage.getItem('userType');
 
   return (
     <div className={styles.home}>
@@ -27,18 +29,22 @@ function Home() {
           >
             Meus Eventos
           </li>
-          <li
-            className={`${styles.sidebarItem} ${selectedOption === 'EventsCreate' ? styles.active : ''}`}
-            onClick={() => setSelectedOption('EventsCreate')}
-          >
-            Criar Evento (admin)
-          </li>
-          <li
-            className={`${styles.sidebarItem} ${selectedOption === 'EventsAdmin' ? styles.active : ''}`}
-            onClick={() => setSelectedOption('EventsAdmin')}
-          >
-            Eventos (admin)
-          </li>
+          {userType === 'admin' && (
+            <>
+              <li
+                className={`${styles.sidebarItem} ${selectedOption === 'EventsCreate' ? styles.active : ''}`}
+                onClick={() => setSelectedOption('EventsCreate')}
+              >
+                Criar Evento (admin)
+              </li>
+              <li
+                className={`${styles.sidebarItem} ${selectedOption === 'EventsAdmin' ? styles.active : ''}`}
+                onClick={() => setSelectedOption('EventsAdmin')}
+              >
+                Eventos (admin)
+              </li>
+            </>
+          )}
           <li
             className={`${styles.sidebarItem} ${styles.logoutItem}`}
             onClick={() => {
