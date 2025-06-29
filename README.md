@@ -1,17 +1,5 @@
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-
-
 banco de dados 
 CREATE DATABASE sistema_eventos;
 
@@ -44,21 +32,8 @@ CREATE TABLE inscricoes (
     UNIQUE(usuario_id, evento_id)
 );
 
-
 popular 
 
 -- Inserindo um admin
 INSERT INTO usuarios (nome, email, senha, tipo_usuario)
-VALUES ('Admin 1', 'admin@email.com', 'senha_criptografada_aqui', 'admin');
-
--- Inserindo um usuário comum
-INSERT INTO usuarios (nome, email, senha, tipo_usuario)
-VALUES ('João Silva', 'joao@email.com', 'senha_criptografada_aqui', 'comum');
-
--- Inserindo um evento criado pelo admin
-INSERT INTO eventos (apresentador, descricao, data_evento, hora_evento, local, criado_por)
-VALUES ('Prof. Maria', 'Palestra sobre IA', '2025-07-01', '19:00', 'Auditório Central', 1);
-
--- João se inscrevendo no evento
-INSERT INTO inscricoes (usuario_id, evento_id)
-VALUES (2, 1);
+VALUES ('Admin 1', 'admin@email.com', '123', 'admin');
