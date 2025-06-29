@@ -19,14 +19,15 @@ function Auth() {
         body: JSON.stringify({ email, senha: password })
       });
       const data = await res.json();
-
+      localStorage.setItem('userId', data?.user?.id);
+      localStorage.setItem('userType', data?.user?.tipo_usuario);
+      
       if (!res.ok) {
         alert(data.error || 'Erro no login');
         return;
       }
 
       alert(`Bem-vindo, ${data.user.nome}!`);
-      // Você pode salvar token ou user info no localStorage aqui, se tiver
       navigate('/home');
     } catch (err) {
       alert('Erro ao conectar com a API');

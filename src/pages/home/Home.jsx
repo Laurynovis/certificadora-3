@@ -2,9 +2,13 @@ import { useState } from 'react'
 import styles from './styles.module.css'
 import Events from '../../components/Events/Events'
 import CreateEvent from '../../components/CriarEvento/CriarEvento'
+import MyEvents from '../../components/MeusEventos/Events'
+import EventsAdmin from '../../components/EventosAdmin/Events'
+import { useNavigate } from 'react-router-dom';
 
 function Home() {
-  const [selectedOption, setSelectedOption] = useState('Eventos')
+  const [selectedOption, setSelectedOption] = useState('Events')
+  const navigate = useNavigate();
 
   return (
     <div className={styles.home}>
@@ -37,7 +41,11 @@ function Home() {
           </li>
           <li
             className={`${styles.sidebarItem} ${styles.logoutItem}`}
-            onClick={() => setSelectedOption('EventsAdmin')}
+            onClick={() => {
+              localStorage.clear();
+              navigate('/');
+            }}
+            
           >
             Sair
           </li>
@@ -45,9 +53,9 @@ function Home() {
       </div>
       <div className={styles.mainContent}>
         {selectedOption === 'Events' && <Events />}
-        {/* {selectedOption === 'MyEvents' && <MyEvents />} */}
+        {selectedOption === 'MyEvents' && <MyEvents />}
         {selectedOption === 'EventsCreate' && <CreateEvent />}
-        {selectedOption === 'EventsAdmin' && <Events />}
+        {selectedOption === 'EventsAdmin' && <EventsAdmin />}
       </div>
     </div>
   )

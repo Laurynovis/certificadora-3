@@ -2,53 +2,16 @@ import { useState, useEffect } from 'react';
 import styles from './styles.module.css';
 import testImage from '../../assets/images/woman_speaker.png';
 
-function Home() {
-  const [events, setEvents] = useState([]);
-
-  useEffect(() => {
-    fetch('http://localhost:3000/api/eventos')
-      .then(res => res.json())
-      .then(data => {
-        setEvents(data);
-      })
-      .catch(error => {
-        console.error('Erro ao carregar eventos:', error);
-        alert('Erro ao carregar eventos');
-      });
-  }, []);
-
+function MeusEventos() {
+  const [events, setMeusEventos] = useState([]);
   const userId = localStorage.getItem('userId');
 
-  const handleInscrever = async (eventoId) => {
-    if (!userId) {
-      alert('Você precisa estar logado para se inscrever.');
-      return;
-    }
-
-    try {
-      const res = await fetch('http://localhost:3000/api/inscricoes', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          usuario_id: userId,
-          evento_id: eventoId
-        })
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        alert(data.error || 'Erro ao se inscrever');
-        return;
-      }
-
-      alert('Inscrição realizada com sucesso!');
-    } catch (error) {
-      console.error('Erro ao inscrever:', error);
-      alert('Erro ao se inscrever no evento');
-    }
-  };
-
+  useEffect(() => {
+    fetch(`http://localhost:3000/api/inscricoes/${userId}`)
+      .then(res => res.json())
+      .then(data => setMeusEventos(data))
+      .catch(err => console.error('Erro ao buscar eventos inscritos:', err));
+  }, [userId]);
 
   return (
     <>
@@ -79,4 +42,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default MeusEventos;

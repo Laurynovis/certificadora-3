@@ -4,7 +4,9 @@ import testImage from '../../assets/images/woman_speaker.png';
 
 function Home() {
   const [events, setEvents] = useState([]);
-
+  const [selectedEventId, setSelectedEventId] = useState(null);
+  const [inscritos, setInscritos] = useState([]);
+  
   useEffect(() => {
     fetch('http://localhost:3000/api/eventos')
       .then(res => res.json())
@@ -17,37 +19,23 @@ function Home() {
       });
   }, []);
 
-  const userId = localStorage.getItem('userId');
+  const fetchInscritos = async (eventoId) => {
+  if (selectedEventId === eventoId) {
+    setSelectedEventId(null);
+    setInscritos([]);
+    return;
+  }
 
-  const handleInscrever = async (eventoId) => {
-    if (!userId) {
-      alert('Você precisa estar logado para se inscrever.');
-      return;
-    }
-
-    try {
-      const res = await fetch('http://localhost:3000/api/inscricoes', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          usuario_id: userId,
-          evento_id: eventoId
-        })
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        alert(data.error || 'Erro ao se inscrever');
-        return;
-      }
-
-      alert('Inscrição realizada com sucesso!');
-    } catch (error) {
-      console.error('Erro ao inscrever:', error);
-      alert('Erro ao se inscrever no evento');
-    }
-  };
+  try {
+    const res = await fetch(`http://localhost:3000/api/inscricoes/evento/${eventoId}`);
+    const data = await res.json();
+    setInscritos(data);
+    setSelectedEventId(eventoId);
+  } catch (error) {
+    console.error('Erro ao carregar inscritos:', error);
+    alert('Erro ao carregar inscritos');
+  }
+};
 
 
   return (
@@ -68,10 +56,26 @@ function Home() {
                 {new Date(event.data_evento).toLocaleDateString('pt-BR')} às {event.hora_evento.slice(0, 5)}
               </p>
               <p className={styles.cardLocation}>{event.local}</p>
-              <button className={styles.cardButton} onClick={() => handleInscrever(event.id)}>
-                Inscrever-se
+              <button className={styles.cardButton} onClick={() => fetchInscritos(event.id)}>
+                Detalhes
               </button>
             </div>
+            {selectedEventId === event.id && (
+                <div className={styles.inscritosList}>
+                  <h4>Inscritos:</h4>
+                  {inscritos.length > 0 ? (
+                    <ul>
+                      {inscritos.map(inscrito => (
+                        <li key={inscrito.id}>
+                          {inscrito.nome} - {inscrito.email}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p>Nenhum inscrito encontrado.</p>
+                  )}
+                </div>
+              )}
           </div>
         ))}
       </div>
